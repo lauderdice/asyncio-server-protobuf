@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package measurement;
+
+message RequestMessage {
+    repeated MeasurementRecord measurement_records = 1;
+}
+
+message MeasurementRecord {
+    int64 id = 1;
+    PersonName measurerName = 2;
+    int64 timestamp = 3;
+    repeated double download = 4;
+    repeated double upload = 5;
+    repeated double ping = 6;
+}
+message ResponseMessage {
+    repeated MeasurementAverage measurement_averages = 1;
+}
+
+message MeasurementAverage {
+    int64 id = 1;
+    PersonName measurerName = 2;
+    int64 timestamp = 3;
+    double download = 4;
+    double upload = 5;
+    double ping = 6;
+}
+enum PersonName {
+      kristyna = 0;
+      jirka = 1;
+      petr = 2;
+      jana = 3;
+}
+
+//    protoc -I =/Users/janpresperin/Desktop/code/python-examples/async/asyncio_server/proto --python_out =/Users/janpresperin/Desktop/code/python-examples/async/asyncio_server /Users/janpresperin/Desktop/code/python-examples/async/asyncio_server/proto/measurement.proto
