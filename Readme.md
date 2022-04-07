@@ -13,4 +13,3 @@ which uses defaults in constants.py.
 In window 2 run:
 
     python client.py
-
