@@ -39,6 +39,9 @@ class Server():
             except IncompleteReadError:
                 print("EOF detected. Exiting..")
                 break
+            except ConnectionResetError:
+                print("Client ended the connection. Exiting..")
+                break
 
 
     async def _handle_connection(self, reader: StreamReader, writer: StreamWriter):
