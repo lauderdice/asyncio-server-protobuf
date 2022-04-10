@@ -14,8 +14,8 @@ or just:
 
     python server.py
 
-which uses defaults in constants.py.
+which uses defaults in constants.py but it asks for a prompt.
 
-To run a test client: In window 2 run:
+To run a test Python client: In window 2 run:
 
     python client.py

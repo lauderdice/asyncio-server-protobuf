@@ -72,15 +72,14 @@ class Server():
 
 
 @click.command()
-@click.option('--dataformat', default=DataTransferFormat.Protobuf.value, help='json, proto, avro', prompt='Data transfer format can be 3 types: json, proto, avro')
+@click.option('--dataformat', default=DataTransferFormat.Protobuf.value, help='proto', prompt='Data transfer format can be of 1 type: proto')
 @click.option('--port', default=C.PORT, prompt='Port to run the server on')
 @click.option('--address', default=C.ADDRESS,prompt='Address to run the server on')
 def main(address: str, port: int, dataformat: str):
-    dformat = None
     try:
         dformat = DataTransferFormat(dataformat)
     except ValueError:
-        exit("Unknown data format")
+        raise NotImplementedError("This format is not yet supported. We chose to implement Protobuf.")
     s = Server(address, port, DataTransferFormat(dformat))
     s.run()
 
