@@ -1,4 +1,4 @@
-from typing import Tuple
+from typing import Tuple, Dict
 
 import numpy as np
 
@@ -21,3 +21,19 @@ class DataProcessor():
         avg_rec.ping = float(np.mean(mrecord.ping))
         avg_rec.timestamp = mrecord.timestamp
         return avg_rec
+
+    def calculate_averages_avro(self, event_dict: Dict) -> Dict:
+        result = {
+            "records" : [self._get_averages_avro(x) for x in event_dict["records"]]
+        }
+        return result
+
+    def _get_averages_avro(self, record: Dict):
+        return {
+            "id": record["id"],
+            "measureName":record["measureName"],
+            "timestamp":record["timestamp"],
+            "download":float(np.mean(record["download"])),
+            "upload": float(np.mean(record["upload"])),
+            "ping": float(np.mean(record["ping"]))
+        }

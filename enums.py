@@ -9,6 +9,6 @@ class PersonName(enum.Enum):
 
 
 class DataTransferFormat(enum.Enum):
-    # JSON = "json"
+    JSON = "json"
     Protobuf = "proto"
-    # Avro = "avro"
+    Avro = "avro"
